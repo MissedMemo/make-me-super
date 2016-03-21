@@ -5,6 +5,7 @@ import  { fetchCharacters, selectCharacter, selectSecondCharacter, deselectChara
 import CharacterList from './CharacterList'
 import CharacterDetails from './CharacterDetails'
 import Fight from './Fight'
+import Upgrade from './Upgrade'
 
 export default class App extends Component {
   constructor(props) {
@@ -53,18 +54,20 @@ export default class App extends Component {
                        handleClick={this.handleClick} />
         <div className="row">
           <div className="col-md-6">
-        { characterOne.selected ? <CharacterDetails character={characterOne} /> : <div></div> }
+            { characterOne.selected ? <CharacterDetails character={characterOne} /> : <div></div> }
           </div>
           <div className="col-md-6">
-        { characterTwo.selected ? <CharacterDetails character={characterTwo} /> : <div></div> }
+            { characterTwo.selected ? <CharacterDetails character={characterTwo} /> : <div></div> }
           </div>
         </div>
+
+        {  (characterOne.selected && !characterTwo.selected )
+        || (characterTwo.selected && !characterOne.selected )  ? 
+          <Upgrade characterOne={characterOne} characterTwo={characterTwo}
+                   openModal={this.openModal} closeModal={this.closeModal} modal={modal} /> : <div></div> }
         { characterOne.selected && characterTwo.selected ? 
-          <Fight characterOne={characterOne} 
-                 characterTwo={characterTwo}
-                 openModal={this.openModal}
-                 closeModal={this.closeModal}
-                 modal={modal} /> : <div></div> }
+          <Fight characterOne={characterOne} characterTwo={characterTwo}
+                 openModal={this.openModal} closeModal={this.closeModal} modal={modal} /> : <div></div> }
       </div>
     )
   }
