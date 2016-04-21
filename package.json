@@ -16,6 +16,7 @@
     "babel-preset-react": "^6.3.13",
     "bootstrap": "^3.3.6",
     "bootstrap-webpack": "0.0.5",
+    "classnames": "^2.2.3",
     "css-loader": "^0.23.1",
     "exports-loader": "^0.6.3",
     "express": "^4.13.3",

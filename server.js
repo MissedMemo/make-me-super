@@ -23,7 +23,6 @@ app.get('/images', function(req, res) {
 })
 
 if (!isProduction) {
-  console.log(isProduction);
   var bundle = require('./server/bundle.js');
   bundle();
   app.all('/build/*', function (req, res) {
